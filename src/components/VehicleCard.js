@@ -1,10 +1,12 @@
 import React from 'react';
 import VehicleImage from './VehicleImage.js'
 
+function VehicleCard({make, model, year, price_per_day, description}) {
+  return (
+    <div>
 
-
-function VehicleCard() {
-  return (<div></div>);
+    </div>
+  );
 }
 
 export default VehicleCard;
