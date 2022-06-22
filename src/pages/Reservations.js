@@ -1,19 +1,32 @@
-import React, { useEffect } from 'react'
-import Header from '../components/Header.js'
+import React, { useEffect, useState } from 'react'
 import ReservationsContainer from '../components/ReservationsContainer.js'
 
 
-function Reservations() {
+function Reservations({activeUser}) {
+  const [userReservations, setUserReservations] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:9494/guests/100`)
-      .then(resp => resp.json())
-      .then(console.log)
+    if(activeUser) {
+      setUserReservations(activeUser.reservations)
+    }
   }, [])
+
+  const handleDelete = reservationId => {
+    console.log(reservationId)
+    fetch(`http://localhost:9494/reservations/${reservationId}`, {
+      method: 'DELETE'
+    })
+      .then(resp => resp.json())
+      .then(deletedObj => {
+        console.log(deletedObj)
+        const updatedReservations = userReservations.filter(reservation => reservation.id !== deletedObj.id)
+        setUserReservations(updatedReservations)
+      })
+  }
 
   return (
     <div className='reservations'>
-      This is the Reservations page.
+      <ReservationsContainer reservations={userReservations} handleDelete={handleDelete}/>
     </div>
   );
 }

@@ -39,7 +39,7 @@
   padding: 5px;
   border-radius: 2px;
 }
-a:hover {
+a:hover, button:hover {
   cursor: pointer;
 }
 
@@ -50,4 +50,27 @@ a:hover {
 
 .vehicle-image img {
   max-width: 400px;
+}
+
+.reservations-container {
+  
+}
+
+.reservation-card {
+  display: grid;
+  grid-template-columns: 400px calc(100vw - 400px);
+  grid-template-rows: 100px 50px 50px 50px 50px;
+  justify-items: center;
+}
+.reservation-card .vehicle-image {
+  grid-column: 1;
+  grid-row: 1 / 6;
+}
+.reservation-card p, h1 {
+  grid-column: 2;
+}
+.reservation-card button {
+  background-color: black;
+  margin: 2px;
+  width: 250px;
 }

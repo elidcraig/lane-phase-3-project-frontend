@@ -20,7 +20,7 @@ function Login({handleLogin}) {
       .then(resp => resp.json())
       .then(userObject => {
         handleLogin(userObject)
-        history.push('/vehicles')
+        history.push('/reservations')
       })
   }
 

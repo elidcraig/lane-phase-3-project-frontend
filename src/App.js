@@ -30,7 +30,7 @@ function App() {
         <NewReservation />
       </Route>
       <Route path='/reservations'>
-        <Reservations/>
+        <Reservations activeUser={activeUser}/>
       </Route>
       <Route path='/hosts/:id'>
         <Host/>
