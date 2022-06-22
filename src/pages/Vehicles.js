@@ -5,7 +5,6 @@ import SearchBar from '../components/SearchBar.js'
 import FilterBar from '../components/FilterBar.js'
 
 function Vehicles() {
-
   const [vehicles, setVehicles] = useState([])
 
   useEffect(() => {
@@ -16,7 +15,6 @@ function Vehicles() {
 
   return (
     <div className='vehicles'>
-
       <SearchBar/>
       <FilterBar/>
       <VehiclesContainer vehicles={vehicles} />

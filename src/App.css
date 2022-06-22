@@ -32,6 +32,26 @@
   width: 400px;
 }
 
+.vehicle-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.vehicle-card__header-host {
+  display: flex;
+}
+
+.vehicle-card__host-avatar {
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 100%;
+  margin-left: 10px;
+  width: 50px;
+  height: 50px;
+}
+
 .vehicle-card__link {
   background-color: black;
   color: white;
