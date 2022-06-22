@@ -1,7 +1,6 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import { DateRangePicker } from 'react-date-range';
-import Header from '../components/Header.js';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 

@@ -5,18 +5,26 @@ import VehiclesContainer from '../components/VehiclesContainer.js'
 
 
 function Host() {
-
+  const [host, setHost] = useState({})
   const [vehicles, setVehicles] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:9494/hosts/62`)
+    fetch(`http://localhost:9494/hosts/83`)
       .then(resp => resp.json())
-      .then(data => setVehicles(data.vehicles))
+      .then(data => {
+        const hostObj = {
+          username: data.username,
+          profileImage: data.profile_image_url,
+          id: data.id
+        }
+        setHost(hostObj)
+        setVehicles(data.vehicles)
+      })
   }, [])
 
   return (
     <div className='host'>
-      This is the Host page.
+      <HostCard hostInfo={host}/>
       <VehiclesContainer vehicles={vehicles}/>
     </div>
   );

@@ -1,6 +1,10 @@
-function HostCard() {
+function HostCard({hostInfo}) {
+  const {username, profileImage, id} = hostInfo
   return (
-    <div></div>
+    <div className="host-card">
+      <img src={profileImage}/>
+      <h2>{username}</h2>
+    </div>
   );
 }
 
