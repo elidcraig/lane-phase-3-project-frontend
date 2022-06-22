@@ -8,7 +8,7 @@ function VehiclesContainer({vehicles}) {
   const vehicleComponents = vehicles.map(vehicleObj => createCard(vehicleObj))
   
   return (
-    <div>
+    <div className='vehicles-container'>
       {vehicleComponents}
     </div>
   );
