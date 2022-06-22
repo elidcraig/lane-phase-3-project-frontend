@@ -9,8 +9,15 @@ import NewReservation from './pages/NewReservation';
 import Login from './pages/Login'
 import { Route } from 'react-router-dom';
 
+const defaultUser = {
+  id: 154,
+  username: 'samara',
+  profile_image_url: "https://robohash.org/repellendusaccusamusomnis.png?size=300x300&set=set1",
+  reservations: []
+}
+
 function App() {
-  const [activeUser, setActiveUser] = useState({})
+  const [activeUser, setActiveUser] = useState(defaultUser)
 
   const handleLogin = userObject => setActiveUser(userObject)
 
