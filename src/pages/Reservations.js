@@ -13,7 +13,6 @@ function Reservations() {
 
   return (
     <div className='reservations'>
-      <Header/>
       This is the Reservations page.
     </div>
   );

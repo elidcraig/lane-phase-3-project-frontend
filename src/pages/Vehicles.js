@@ -16,7 +16,7 @@ function Vehicles() {
 
   return (
     <div className='vehicles'>
-      <Header/>
+
       <SearchBar/>
       <FilterBar/>
       <VehiclesContainer vehicles={vehicles} />

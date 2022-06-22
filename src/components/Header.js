@@ -2,7 +2,7 @@ import { Avatar } from '@mui/material';
 import React from 'react';
 
 
-function Header() {
+function Header({activeUser}) {
   return (
     <div className='header'>
       <h1 className='header__title'>LANE</h1>

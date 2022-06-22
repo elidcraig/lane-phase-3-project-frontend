@@ -43,7 +43,6 @@ function NewReservation() {
 
   return (
     <div>
-      <Header/>
       <DateRangePicker
         ranges={[formData]}
         disabledDates={[/*place reserved dates here*/]}
