@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { TextField } from "@mui/material";
 
 function Login({handleLogin}) {
+  const history = useHistory()
+
   const [formData, setFormData] = useState('')
 
   const handleSubmit = e => {
@@ -17,7 +20,7 @@ function Login({handleLogin}) {
       .then(resp => resp.json())
       .then(userObject => {
         handleLogin(userObject)
-        // send user to home page
+        history.push('/vehicles')
       })
   }
 
