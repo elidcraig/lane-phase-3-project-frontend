@@ -14,6 +14,7 @@ function Host() {
 
   return (
     <div className='host'>
+      <Header/>
       This is the Host page.
     </div>
   );
