@@ -1,9 +1,8 @@
 import React from 'react';
 import VehicleImage from './VehicleImage.js'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-function VehicleCard({make, model, year, price_per_day, description, image_url, host}) {
-  const history = useHistory()
+function VehicleCard({make, model, year, price_per_day, description, image_url, id, host}) {
   
   return (
     <div className='vehicle-card'>
@@ -17,7 +16,7 @@ function VehicleCard({make, model, year, price_per_day, description, image_url, 
       </div>
       <p>{description}</p>
       <h5>${price_per_day} / day</h5>
-      <Link to='/reservations/new' className='vehicle-card__link'>
+      <Link to={`/reservations/new/${id}`} className='vehicle-card__link'>
         Book This Vehicle
       </Link>
     </div>

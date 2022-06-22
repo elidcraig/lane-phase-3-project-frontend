@@ -72,10 +72,6 @@ a:hover, button:hover {
   max-width: 400px;
 }
 
-.reservations-container {
-  
-}
-
 .reservation-card {
   display: grid;
   grid-template-columns: 400px calc(100vw - 400px);
@@ -94,6 +90,21 @@ a:hover, button:hover {
   margin: 2px;
   width: 250px;
 }
+
+.new-reservation {
+  padding: 10px 25vw;
+  text-align: center;
+}
+
+.new-reservation__submit {
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
 
 .host-card {
   text-align: center;

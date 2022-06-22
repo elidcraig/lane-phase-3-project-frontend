@@ -27,14 +27,14 @@ function App() {
       <Route path='/login'>
         <Login handleLogin={handleLogin}/>
       </Route>
-      <Route path='/vehicles'>
+      <Route exact path='/vehicles'>
         <Vehicles/>
       </Route>
       {/* <Route path='/vehicles/:id'>
 
       </Route> */}
-      <Route path='/reservations/new'>
-        <NewReservation />
+      <Route path='/reservations/new/:id'>
+        <NewReservation activeUser={activeUser}/>
       </Route>
       <Route path='/reservations'>
         <Reservations activeUser={activeUser}/>

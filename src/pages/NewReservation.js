@@ -1,34 +1,27 @@
-import { Button } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
-import { DateRangePicker } from 'react-date-range';
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css';
+import { useParams, useHistory } from 'react-router-dom'
 
-function NewReservation() {
+function NewReservation({activeUser}) {
+  const params = useParams()
+  const history = useHistory()
+
   const [formData, setFormData] = useState({
-    startDate: new Date(),
-    endDate: new Date(),
-    key: 'selection'
+    startDate: null,
+    endDate: null
   })
 
-  const handleSelect = ranges => {
-    console.log(ranges)
-    const newFormData = {
-      startDate: ranges.selection.startDate,
-      endDate: ranges.selection.endDate,
-      key: 'selection'
-    }
-    setFormData(newFormData)
+  const handleChange = e => {
+    setFormData({...formData, [e.target.name]: e.target.value})
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    e.preventDefault()
     const patchObject = {
-      // need to format date correctly
-      // here or in controller or in model?
-      startDate: formData.startDate,
-      endDate: formData.endDate,
-      vehicle_id: 100,
-      guest_id: 100
+      start_date: formData.startDate,
+      end_date: formData.endDate,
+      vehicle_id: params.id,
+      guest_id: activeUser.id
     }
     fetch('http://localhost:9494/reservations', {
       method: 'POST',
@@ -38,17 +31,31 @@ function NewReservation() {
       },
       body: JSON.stringify(patchObject)
     })
+      .then(resp => resp.json())
+      .then(history.push('/reservations'))
   }
 
   return (
-    <div>
-      <DateRangePicker
-        ranges={[formData]}
-        disabledDates={[/*place reserved dates here*/]}
-        onChange={handleSelect}
+    <form className='new-reservation' onSubmit={handleSubmit}>
+      <TextField 
+        fullWidth
+        margin='normal'
+        label='Start Date'
+        name='startDate'
+        value={formData.startDate}
+        onChange={handleChange}
       />
-      <Button onClick={handleSubmit}>SUBMIT</Button>
-    </div>
+      <TextField 
+        fullWidth
+        margin='normal'
+        label='End Date'
+        name='endDate'
+        helperText='Please use format mm/dd/yyyy'
+        value={formData.endDate}
+        onChange={handleChange}
+      />
+      <input type='submit' className='new-reservation__submit' value='SUBMIT'/>
+    </form>
   );
 }
 
