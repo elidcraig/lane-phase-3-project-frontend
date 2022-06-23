@@ -8,6 +8,7 @@ import Host from './pages/Host.js'
 import NewReservation from './pages/NewReservation';
 import Login from './pages/Login'
 import { Route } from 'react-router-dom';
+import EditReservation from './pages/EditReservation';
 
 
 function App() {
@@ -41,11 +42,16 @@ function App() {
       {/* <Route path='/vehicles/:id'>
 
       </Route> */}
-      <Route path='/reservations/new'>
+      <Route path='/reservations/:id/edit'>
+        <EditReservation activeUser={activeUser} activeVehicle={activeVehicle}/>
+      </Route>
+      <Route exact path='/reservations/new'>
         <NewReservation activeUser={activeUser} activeVehicle={activeVehicle} reload={reloadActiveUser}/>
       </Route>
       <Route exact path='/reservations'>
-        <Reservations activeUser={activeUser} reservations={activeUser.reservations ? activeUser.reservations : []} reload={reloadActiveUser}/>
+        <Reservations activeUser={activeUser} reservations={activeUser.reservations ? activeUser.reservations : []} reload={reloadActiveUser}
+          handleVehicleChoice={handleVehicleChoice}
+        />
       </Route>
       <Route path='/hosts/:id'>
         <Host/>

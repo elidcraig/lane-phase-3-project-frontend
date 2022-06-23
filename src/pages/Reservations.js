@@ -2,7 +2,7 @@ import React from 'react'
 import ReservationCard from '../components/ReservationCard.js'
 
 
-function Reservations({activeUser, reservations, reload}) {
+function Reservations({activeUser, reservations, reload, handleVehicleChoice}) {
 
   const handleDelete = reservationId => {
     console.log(reservationId)
@@ -16,7 +16,9 @@ function Reservations({activeUser, reservations, reload}) {
   }
 
   const reservationComponents = reservations.map(resObject => {
-    return (<ReservationCard {...resObject} key={resObject.id} handleDelete={handleDelete}/>)
+    return (<ReservationCard {...resObject} key={resObject.id} handleDelete={handleDelete}
+      handleVehicleChoice={handleVehicleChoice}
+    />)
   })
 
   return (

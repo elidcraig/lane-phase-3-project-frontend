@@ -3,8 +3,13 @@ import React from 'react';
 import VehicleImage from './VehicleImage';
 import { useHistory } from 'react-router-dom'
 
-function ReservationCard({start_date, end_date, vehicle, id, handleDelete}) {
+function ReservationCard({start_date, end_date, vehicle, id, handleDelete, handleVehicleChoice}) {
+  const history = useHistory()
 
+  const handleChangeReservation = () => {
+    handleVehicleChoice(vehicle)
+    history.push(`/reservations/${id}/edit`)
+  }
 
 
   return (
@@ -13,7 +18,7 @@ function ReservationCard({start_date, end_date, vehicle, id, handleDelete}) {
       <h1>{vehicle.make}</h1>
       <p>Start date: {start_date}</p>
       <p>End date: {end_date}</p>
-      <Button variant='contained'>Change this Reservation</Button>
+      <Button variant='contained' onClick={() => handleChangeReservation()}>Change this Reservation</Button>
       <Button variant='contained' onClick={() => handleDelete(id)}>Delete this Reservation</Button>
     </div>
   );

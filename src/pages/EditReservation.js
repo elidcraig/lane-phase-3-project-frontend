@@ -1,10 +1,7 @@
-import { TextField } from '@mui/material';
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom'
+import { TextField } from '@mui/material';
 
-function NewReservation({activeUser, activeVehicle, reload}) {
-  const history = useHistory()
-
+function EditReservation({activeUser, activeVehicle}) {
   const [formData, setFormData] = useState({
     startDate: null,
     endDate: null
@@ -29,25 +26,6 @@ function NewReservation({activeUser, activeVehicle, reload}) {
 
   const handleSubmit = e => {
     e.preventDefault()
-    const postObject = {
-      start_date: formData.startDate,
-      end_date: formData.endDate,
-      vehicle_id: activeVehicle.id,
-      guest_id: activeUser.id
-    }
-    fetch('http://localhost:9494/reservations', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(postObject)
-    })
-      .then(resp => resp.json())
-      .then(newReserve => {
-        reload()
-        history.push('/reservations')
-      })
   }
 
   return (
@@ -75,4 +53,4 @@ function NewReservation({activeUser, activeVehicle, reload}) {
   );
 }
 
-export default NewReservation;
+export default EditReservation;
