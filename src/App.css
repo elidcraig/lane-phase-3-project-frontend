@@ -18,6 +18,11 @@
   font-size: 60px;
 }
 
+.header__navlinks {
+  font-style: italic;
+  cursor: pointer;
+}
+
 .vehicles-container {
   display: flex;
   flex-wrap: wrap;

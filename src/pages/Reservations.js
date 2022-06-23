@@ -1,5 +1,4 @@
 import React from 'react'
-import ReservationsContainer from '../components/ReservationsContainer.js'
 import ReservationCard from '../components/ReservationCard.js'
 
 
@@ -13,8 +12,6 @@ function Reservations({activeUser, reservations, reload}) {
       .then(resp => resp.json())
       .then(deletedObj => {
         reload()
-        // const updatedReservations = userReservations.filter(reservation => reservation.id !== deletedObj.id)
-        // setUserReservations(updatedReservations)
       })
   }
 
