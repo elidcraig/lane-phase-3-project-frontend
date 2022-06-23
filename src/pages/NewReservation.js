@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
 
-function NewReservation({activeUser, activeVehicle}) {
+function NewReservation({activeUser, activeVehicle, reload}) {
   const history = useHistory()
 
   const [formData, setFormData] = useState({
@@ -18,7 +18,6 @@ function NewReservation({activeUser, activeVehicle}) {
 
   const handleChange = e => {
     setFormData({...formData, [e.target.name]: e.target.value})
-
   }
 
   const calculatePrice = (start, end) => {
@@ -45,7 +44,10 @@ function NewReservation({activeUser, activeVehicle}) {
       body: JSON.stringify(patchObject)
     })
       .then(resp => resp.json())
-      .then(history.push('/reservations'))
+      .then(newReserve => {
+        reload()
+        history.push('/reservations')
+      })
   }
 
   return (

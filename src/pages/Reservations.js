@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ReservationsContainer from '../components/ReservationsContainer.js'
 import ReservationCard from '../components/ReservationCard.js'
 
 
-function Reservations({activeUser}) {
-  const [userReservations, setUserReservations] = useState([])
-
-  useEffect(() => {
-    if(activeUser) {
-      setUserReservations(activeUser.reservations)
-    }
-  }, [activeUser])
+function Reservations({activeUser, reservations, reload}) {
 
   const handleDelete = reservationId => {
     console.log(reservationId)
@@ -19,13 +12,13 @@ function Reservations({activeUser}) {
     })
       .then(resp => resp.json())
       .then(deletedObj => {
-        console.log(deletedObj)
-        const updatedReservations = userReservations.filter(reservation => reservation.id !== deletedObj.id)
-        setUserReservations(updatedReservations)
+        reload()
+        // const updatedReservations = userReservations.filter(reservation => reservation.id !== deletedObj.id)
+        // setUserReservations(updatedReservations)
       })
   }
 
-  const reservationComponents = userReservations.map(resObject => {
+  const reservationComponents = reservations.map(resObject => {
     return (<ReservationCard {...resObject} key={resObject.id} handleDelete={handleDelete}/>)
   })
 

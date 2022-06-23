@@ -15,11 +15,15 @@ function App() {
   const [activeVehicle, setActiveVehicle] = useState({})
 
   useEffect(() => {
+    reloadActiveUser()
+  }, [])
+
+  const reloadActiveUser = () => {
     fetch('http://localhost:9494/guests/active')
       .then(resp => resp.json())
       .then(userObject => setActiveUser(userObject))
       .catch(() => setActiveUser({}))
-  }, [])
+  }
 
   const handleLogin = userObject => setActiveUser(userObject)
 
@@ -29,7 +33,7 @@ function App() {
     <div className="app">
       <Header activeUser={activeUser} />
       <Route path='/login'>
-        <Login handleLogin={handleLogin}/>
+        <Login handleLogin={handleLogin} reload={reloadActiveUser}/>
       </Route>
       <Route exact path='/vehicles'>
         <Vehicles handleVehicleChoice={handleVehicleChoice}/>
@@ -38,10 +42,10 @@ function App() {
 
       </Route> */}
       <Route path='/reservations/new'>
-        <NewReservation activeUser={activeUser} activeVehicle={activeVehicle}/>
+        <NewReservation activeUser={activeUser} activeVehicle={activeVehicle} reload={reloadActiveUser}/>
       </Route>
       <Route path='/reservations'>
-        <Reservations activeUser={activeUser}/>
+        <Reservations activeUser={activeUser} reservations={activeUser.reservations ? activeUser.reservations : []} reload={reloadActiveUser}/>
       </Route>
       <Route path='/hosts/:id'>
         <Host/>

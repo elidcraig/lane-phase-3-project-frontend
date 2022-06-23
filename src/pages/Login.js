@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { TextField } from "@mui/material";
 
-function Login({handleLogin}) {
+function Login({handleLogin, reload}) {
   const history = useHistory()
 
   const [formData, setFormData] = useState('')
@@ -20,6 +20,7 @@ function Login({handleLogin}) {
       .then(resp => resp.json())
       .then(userObject => {
         handleLogin(userObject)
+        reload()
         history.push('/reservations')
       })
   }
