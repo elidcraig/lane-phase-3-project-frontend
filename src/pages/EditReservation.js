@@ -63,7 +63,6 @@ function EditReservation({activeUser, activeVehicle, reload}) {
       <TextField 
         fullWidth
         margin='normal'
-        label='Start Date'
         name='startDate'
         value={formData.startDate}
         onChange={handleChange}
@@ -71,7 +70,6 @@ function EditReservation({activeUser, activeVehicle, reload}) {
       <TextField 
         fullWidth
         margin='normal'
-        label='End Date'
         name='endDate'
         helperText='Please use format yyyy-mm-dd'
         value={formData.endDate}

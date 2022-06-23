@@ -15,7 +15,7 @@ function ReservationCard({start_date, end_date, vehicle, id, handleDelete, handl
   return (
     <div className='reservation-card'>
       <VehicleImage image_url={vehicle.image_url}/>
-      <h1>{vehicle.make}</h1>
+      <h1>{vehicle.year} {vehicle.make} {vehicle.model}</h1>
       <p>Start date: {start_date}</p>
       <p>End date: {end_date}</p>
       <Button variant='contained' onClick={() => handleChangeReservation()}>Change this Reservation</Button>
