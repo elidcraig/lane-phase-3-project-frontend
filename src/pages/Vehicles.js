@@ -4,7 +4,7 @@ import VehiclesContainer from '../components/VehiclesContainer.js';
 import SearchBar from '../components/SearchBar.js'
 import FilterBar from '../components/FilterBar.js'
 
-function Vehicles() {
+function Vehicles({handleVehicleChoice}) {
   const [vehicles, setVehicles] = useState([])
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function Vehicles() {
     <div className='vehicles'>
       <SearchBar/>
       <FilterBar/>
-      <VehiclesContainer vehicles={vehicles} />
+      <VehiclesContainer vehicles={vehicles} handleVehicleChoice={handleVehicleChoice}/>
     </div>
   );
 }

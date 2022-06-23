@@ -2,7 +2,7 @@ import React from 'react';
 import VehicleImage from './VehicleImage.js'
 import { Link } from 'react-router-dom'
 
-function VehicleCard({make, model, year, price_per_day, description, image_url, id, host}) {
+function VehicleCard({make, model, year, price_per_day, description, image_url, id, host, handleClick}) {
   
   return (
     <div className='vehicle-card'>
@@ -16,7 +16,7 @@ function VehicleCard({make, model, year, price_per_day, description, image_url, 
       </div>
       <p>{description}</p>
       <h5>${price_per_day} / day</h5>
-      <Link to={`/reservations/new/${id}`} className='vehicle-card__link'>
+      <Link to={'/reservations/new/'} className='vehicle-card__link' onClick={() => handleClick({id: id, price_per_day: price_per_day})}>
         Book This Vehicle
       </Link>
     </div>

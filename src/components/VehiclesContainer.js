@@ -1,9 +1,9 @@
 import React from 'react';
 import VehicleCard from './VehicleCard.js'
 
-function VehiclesContainer({vehicles}) {
+function VehiclesContainer({vehicles, handleVehicleChoice}) {
 
-  const createCard = vehicleObj => <VehicleCard {...vehicleObj} key={vehicleObj.id}/>
+  const createCard = vehicleObj => <VehicleCard {...vehicleObj} key={vehicleObj.id} handleClick={handleVehicleChoice}/>
 
   const vehicleComponents = vehicles.map(vehicleObj => createCard(vehicleObj))
   

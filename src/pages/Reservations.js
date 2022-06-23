@@ -9,7 +9,7 @@ function Reservations({activeUser}) {
     if(activeUser) {
       setUserReservations(activeUser.reservations)
     }
-  }, [])
+  }, [activeUser])
 
   const handleDelete = reservationId => {
     console.log(reservationId)

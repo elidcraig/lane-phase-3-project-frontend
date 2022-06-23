@@ -18,8 +18,11 @@ const defaultUser = {
 
 function App() {
   const [activeUser, setActiveUser] = useState(defaultUser)
+  const [activeVehicle, setActiveVehicle] = useState({})
 
   const handleLogin = userObject => setActiveUser(userObject)
+
+  const handleVehicleChoice = vehicleObject => setActiveVehicle(vehicleObject)
 
   return (
     <div className="app">
@@ -28,13 +31,13 @@ function App() {
         <Login handleLogin={handleLogin}/>
       </Route>
       <Route exact path='/vehicles'>
-        <Vehicles/>
+        <Vehicles handleVehicleChoice={handleVehicleChoice}/>
       </Route>
       {/* <Route path='/vehicles/:id'>
 
       </Route> */}
-      <Route path='/reservations/new/:id'>
-        <NewReservation activeUser={activeUser}/>
+      <Route path='/reservations/new'>
+        <NewReservation activeUser={activeUser} activeVehicle={activeVehicle}/>
       </Route>
       <Route path='/reservations'>
         <Reservations activeUser={activeUser}/>
