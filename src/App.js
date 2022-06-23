@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header.js'
 import Home from './pages/Home.js'
@@ -9,16 +9,17 @@ import NewReservation from './pages/NewReservation';
 import Login from './pages/Login'
 import { Route } from 'react-router-dom';
 
-const defaultUser = {
-  id: 154,
-  username: 'samara',
-  profile_image_url: "https://robohash.org/repellendusaccusamusomnis.png?size=300x300&set=set1",
-  reservations: []
-}
 
 function App() {
-  const [activeUser, setActiveUser] = useState(defaultUser)
+  const [activeUser, setActiveUser] = useState({})
   const [activeVehicle, setActiveVehicle] = useState({})
+
+  useEffect(() => {
+    fetch('http://localhost:9494/guests/active')
+      .then(resp => resp.json())
+      .then(userObject => setActiveUser(userObject))
+      .catch(() => setActiveUser({}))
+  }, [])
 
   const handleLogin = userObject => setActiveUser(userObject)
 

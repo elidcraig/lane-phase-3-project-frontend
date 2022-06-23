@@ -5,7 +5,7 @@ import React from 'react';
 function Header({activeUser}) {
   const {username, profile_image_url} = activeUser
 
-  const getFirstCharacter = name => name[0]
+  const getFirstCharacter = name => name ? name[0] : ''
   const avatarLetter = getFirstCharacter(activeUser.username)
   
   return (

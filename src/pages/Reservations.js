@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ReservationsContainer from '../components/ReservationsContainer.js'
+import ReservationCard from '../components/ReservationCard.js'
 
 
 function Reservations({activeUser}) {
@@ -24,9 +25,15 @@ function Reservations({activeUser}) {
       })
   }
 
+  const reservationComponents = userReservations.map(resObject => {
+    return (<ReservationCard {...resObject} key={resObject.id} handleDelete={handleDelete}/>)
+  })
+
   return (
     <div className='reservations'>
-      <ReservationsContainer reservations={userReservations} handleDelete={handleDelete}/>
+      <div className='reservations-container'>
+        {reservationComponents}
+      </div>
     </div>
   );
 }
