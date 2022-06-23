@@ -1,12 +1,12 @@
 import React from 'react'
-import Header from '../components/Header.js'
-import Login from './Login.js'
-
+import { useHistory } from 'react-router-dom'
 
 function Home() {
+  const history = useHistory()
+  history.push('/login')
   return (
     <div className='home'>
-
+      <h1>Welcome to Lane!</h1>
     </div>
   );
 }

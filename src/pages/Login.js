@@ -26,14 +26,19 @@ function Login({handleLogin, reload}) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <TextField 
-        label='username' 
-        value={formData} 
-        onChange={(e) => setFormData(e.target.value)}
-      />
-      <input type='submit'/>
-    </form>
+    <div className='home'>
+      <h1>Welcome to Lane!</h1>
+
+      <form className='home__login-form' onSubmit={handleSubmit}>
+        <TextField 
+          fullWidth
+          label='username' 
+          value={formData} 
+          onChange={(e) => setFormData(e.target.value)}
+        />
+        <input type='submit'/>
+      </form>
+    </div>
   );
 }
 

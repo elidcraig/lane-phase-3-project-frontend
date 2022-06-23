@@ -16,11 +16,20 @@
   margin: 0;
   font-style: italic;
   font-size: 60px;
+  cursor: pointer;
 }
 
 .header__navlinks {
   font-style: italic;
   cursor: pointer;
+}
+
+.home {
+  text-align: center;
+}
+
+.home__login-form {
+  padding: 5px 35vw 5px 35vw;
 }
 
 .vehicles-container {
