@@ -1,3 +1,5 @@
+import React from 'react';
+
 function VehicleImage({image_url}) {
   return (
     <div className="vehicle-image">

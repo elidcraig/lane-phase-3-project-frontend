@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header.js'
 import Home from './pages/Home.js'
 import Vehicles from './pages/Vehicles.js'
 import Reservations from './pages/Reservations.js'
-import Host from './pages/Host.js'
 import NewReservation from './pages/NewReservation';
 import Login from './pages/Login'
-import { Route } from 'react-router-dom';
 import EditReservation from './pages/EditReservation';
 
 
@@ -39,9 +38,6 @@ function App() {
       <Route exact path='/vehicles'>
         <Vehicles handleVehicleChoice={handleVehicleChoice}/>
       </Route>
-      {/* <Route path='/vehicles/:id'>
-
-      </Route> */}
       <Route path='/reservations/:id/edit'>
         <EditReservation activeUser={activeUser} activeVehicle={activeVehicle} reload={reloadActiveUser}/>
       </Route>
@@ -52,9 +48,6 @@ function App() {
         <Reservations activeUser={activeUser} reservations={activeUser.reservations ? activeUser.reservations : []} reload={reloadActiveUser}
           handleVehicleChoice={handleVehicleChoice}
         />
-      </Route>
-      <Route path='/hosts/:id'>
-        <Host/>
       </Route>
       <Route exact path='/'>
         <Home/>
