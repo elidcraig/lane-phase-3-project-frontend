@@ -43,7 +43,7 @@ function App() {
 
       </Route> */}
       <Route path='/reservations/:id/edit'>
-        <EditReservation activeUser={activeUser} activeVehicle={activeVehicle}/>
+        <EditReservation activeUser={activeUser} activeVehicle={activeVehicle} reload={reloadActiveUser}/>
       </Route>
       <Route exact path='/reservations/new'>
         <NewReservation activeUser={activeUser} activeVehicle={activeVehicle} reload={reloadActiveUser}/>

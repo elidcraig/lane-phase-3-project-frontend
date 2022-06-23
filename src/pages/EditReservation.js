@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom'
 import { TextField } from '@mui/material';
 
-function EditReservation({activeUser, activeVehicle}) {
+function EditReservation({activeUser, activeVehicle, reload}) {
+  const params = useParams()
+  const history = useHistory()
+
   const [formData, setFormData] = useState({
     startDate: null,
     endDate: null
   })
   const [totalPrice, setTotalPrice] = useState(0)
+
+  useEffect(() => {
+    fetch(`http://localhost:9494/reservations/${params.id}`)
+      .then(resp => resp.json())
+      .then(activeReservation => setFormData({
+        startDate: activeReservation.start_date,
+        endDate: activeReservation.end_date
+      }))
+  }, [])
 
   useEffect(() => {
     let price = calculatePrice(formData.startDate, formData.endDate)
@@ -26,6 +39,23 @@ function EditReservation({activeUser, activeVehicle}) {
 
   const handleSubmit = e => {
     e.preventDefault()
+    const patchObject = {
+      start_date: formData.startDate,
+      end_date: formData.endDate
+    }
+    fetch(`http://localhost:9494/reservations/${params.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(patchObject)
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        reload()
+        history.push('/reservations')
+      })
   }
 
   return (
