@@ -14,10 +14,18 @@ function Vehicles({handleVehicleChoice}) {
 
   const displayedVehicles = vehicles.filter(vehicle => vehicle)
 
+  const handleFilterChange = filterValue => {
+    fetch(`http://localhost:9494/vehicles/by_price_${filterValue}`)
+      .then(resp => resp.json())
+      .then(data => {
+        setVehicles(data)
+      })
+  }
+
   return (
     <div className='vehicles'>
       <SearchBar/>
-      <FilterBar/>
+      <FilterBar handleClick={handleFilterChange}/>
       <VehiclesContainer vehicles={displayedVehicles} handleVehicleChoice={handleVehicleChoice}/>
     </div>
   );
